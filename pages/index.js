@@ -8,7 +8,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>ola diogo</div>
+      <div>o octavio é gay</div>
+      <a href="https://cdn.discordapp.com/attachments/810858598954958862/881173812916396052/23023608_1482711901764655_343044072_n.jpg">Click to get a surprise</a>
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
