@@ -1,7 +1,5 @@
 import Head from 'next/head'
 
-PAPEGASYSTEMS OMEGAHILARIO
-
 export default function Home() {
   return (
     <div className="container">
