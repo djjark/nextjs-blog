@@ -7,7 +7,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+ Ricardo-Luz
       <div>o octavio é hilario</div>
       <a href="https://cdn.discordapp.com/attachments/810858598954958862/881173812916396052/23023608_1482711901764655_343044072_n.jpg">Click to get a surprise</a>
       <footer>
