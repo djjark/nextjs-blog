@@ -1,7 +1,9 @@
 import Head from 'next/head'
 
+PAPEGASYSTEMS OMEGAHILARIO
+
 export default function Home() {
-  return (asdasdasd
+  return (
     <div className="container">
       <Head>
         <title>Create Next App</title>
