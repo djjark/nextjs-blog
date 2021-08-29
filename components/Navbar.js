@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div>
             <div className="navbar">
-                <div className="ricardo"><Image src={ricardo} alt="ricardo" /></div>
+                <Link href="/" ><div className="ricardo"><Image src={ricardo} alt="ricardo" /></div></Link>
                 <div className="div1">
                     <Link href="/Ricardo" ><a className="butao">Ricardo</a></Link>
                     <Link href="/Diogo" ><a className="butao">Diogo</a></Link>
