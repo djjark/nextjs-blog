@@ -11,12 +11,22 @@ body {
     padding:10px;
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(40,40,195,1) 0%, rgba(0,212,255,1) 100%);
   }
+  .div1{
+	  margin-left: auto;
+	  display: flex;
+  }
   .butao{
 	color:white;
 	padding:10px;
 	font-size: 20px;
 	font-weight: 500;
-	align-items: flex-end;
+  text-decoration: none;
+	align-self: center;
+  }
+  .butao1 a{
+    margin:10px;
+    text-decoration: none;
+    font-size: 20px;
   }
   .ricardo img{
 	  height: 60px;
