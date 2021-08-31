@@ -19,3 +19,6 @@
 //     }
 // }
 // export default handler;
+export default function NewPostsPage() {
+    return 0;
+}
