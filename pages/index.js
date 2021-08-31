@@ -1,9 +1,9 @@
 import Navbar from '../components/Navbar'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Footer from '../components/Footer'
-import Layout from '../components/Layout'
 import MeetupList from '../components/meetups/MeetupList'
-import { description } from 'platform';
-
+import { MongoClient } from 'mongodb';
 const DUMMY_MEETUPS = [
     {
         id: 'm1',
@@ -20,12 +20,59 @@ const DUMMY_MEETUPS = [
         description: 'this is a first meet2'
     }
 ];
-export default function Home() {
+
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+//     console.log(req + " " + res);
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS,
+//         },
+//     };
+// }
+
+export async function getStaticProps() {
+    //code that runs in the server and not in the client side
+    //we can connect to db or API or backend
+    //fetch('/api/meetups');
+    const uri = "mongodb+srv://ricardo:luz@cluster0.knayb.mongodb.net/nodejs-blog?retryWrites=true&w=majority";
+    const client = await MongoClient.connect(uri);
+    const db = client.db();
+
+    const blogCollection = db.collection('meetups');
+    const blog = await blogCollection.find().toArray();
+    client.close();
+    return {
+        props: {
+            meetups: blog.map(meetup => ({
+                title: meetup.title,
+                address: meetup.address,
+                image: meetup.image,
+                description: meetup.description,
+                id: meetup._id.toString(),
+            }))
+        }, revalidate: 1
+    };
+}
+
+export default function Home(props) {
+    // const [loadedMeetups, setLoadedMeetups] = useState([])
+    // useEffect(() => {
+    //     setLoadedMeetups(props);
+    //     return () => {
+
+    //     }
+    // }, [])
     return (
         <div id="root">
+            <Head>
+                <title>React teste diogo e ricardo</title>
+            </Head>
             <Navbar />
             <div>
-                <MeetupList meetups={DUMMY_MEETUPS} />
+
+                <MeetupList meetups={props.meetups} />
             </div>
             <Footer />
         </div>
