@@ -4,14 +4,11 @@ import { Fragment } from 'react';
 import Link from 'next/link'
 import NewMeetupForm from '../../components/meetups/NewMeetupForm'
 export default function NewPostsPage() {
-    function addMeetupHandler() {
-
-    }
     return (
         <div id="root">
             <Navbar />
             <div>
-                <NewMeetupForm onAddMeetup={addMeetupHandler} />
+                <NewMeetupForm />
             </div>
             <h1>HELLO THIS IS Posts</h1>
             <Fragment>
