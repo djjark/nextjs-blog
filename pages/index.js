@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Footer from '../components/Footer'
 import MeetupList from '../components/meetups/MeetupList'
-import { MongoClient } from 'mongodb';
+const { MongoClient } = require('mongodb');
 const DUMMY_MEETUPS = [
     {
         id: 'm1',

@@ -1,6 +1,6 @@
 //isto mete cenas na base de dados
 
-import { MongoClient } from "mongodb";
+const { MongoClient } = require('mongodb');
 
 async function handler(req, res) {
 

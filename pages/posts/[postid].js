@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
-import { MongoClient, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
+const { MongoClient } = require('mongodb');
+
 export default function DetailPage(props) {
     const router = useRouter();
 
