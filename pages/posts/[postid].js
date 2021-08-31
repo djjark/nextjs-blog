@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
-import { ObjectId } from 'mongodb';
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 export default function DetailPage(props) {
     const router = useRouter();
@@ -28,7 +27,7 @@ export async function getStaticPaths() {
     const blog = await blogCollection.find({}, { _id: 1 }).toArray();
     client.close();
     return {
-        fallback: false,
+        fallback: 'blocking',
         paths: blog.map(blog => ({
             params: { postid: blog._id.toString() }
         })),
