@@ -46,6 +46,7 @@ export async function getStaticProps() {
     return {
         props: {
             meetups: blog.map(meetup => ({
+                hora: meetup.hora,
                 title: meetup.title,
                 address: meetup.address,
                 image: meetup.image,
