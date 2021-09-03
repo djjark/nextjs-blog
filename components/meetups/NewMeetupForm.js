@@ -47,7 +47,7 @@ function NewMeetupForm(props) {
           <label htmlFor='description'>Description</label>
           <textarea
             id='description'
-            required
+            // required
             rows='5'
             ref={descriptionInputRef}
           ></textarea>

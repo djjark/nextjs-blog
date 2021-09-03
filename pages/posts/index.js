@@ -19,7 +19,6 @@ export default function NewPostsPage() {
 
         const data = await response.json();
 
-        console.log(data);
         router.push('/');
         //return data
     }

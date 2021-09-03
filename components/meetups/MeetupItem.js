@@ -1,10 +1,24 @@
 import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
 import { useRouter } from 'next/router';
+
 function MeetupItem(props) {
   const router = useRouter();
   function showDetailsHandler() {
     router.push('/posts/' + props.id);
+  }
+  async function deleteHandler() {
+    router.push('/delete/' + props.id);
+    const response = await fetch('/api/new-meetup', {
+      method: 'DELETE',
+      body: JSON.stringify(props.id),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+
   }
   return (
     <li className={classes.item}>
@@ -18,6 +32,8 @@ function MeetupItem(props) {
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>
+          <button onClick={deleteHandler}>Delete</button>
+
         </div>
       </Card>
     </li>

@@ -3,7 +3,6 @@ import classes from './MeetupList.module.css';
 
 function MeetupList(props) {
   const a = props.meetups.sort((a, b) => b.hora - a.hora)
-  console.log(a)
   return (
     <ul className={classes.list}>
       {a.map((meetup) => (
