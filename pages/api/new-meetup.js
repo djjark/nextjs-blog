@@ -1,7 +1,5 @@
 //isto mete cenas na base de dados
 
-import { redirect } from 'next/dist/server/api-utils';
-
 const { MongoClient, ObjectId } = require('mongodb');
 
 export default async function handler(req, res) {
