@@ -4,45 +4,21 @@ import Head from 'next/head';
 import Footer from '../components/Footer'
 import MeetupList from '../components/meetups/MeetupList'
 const { MongoClient } = require('mongodb');
-const DUMMY_MEETUPS = [
-    {
-        id: 'm1',
-        title: 'meet1',
-        image: 'https://cdn.discordapp.com/attachments/810858598954958862/881173812916396052/23023608_1482711901764655_343044072_n.jpg',
-        address: 'some address',
-        description: 'this is a first meet'
-    },
-    {
-        id: 'm2',
-        title: 'meet2',
-        image: 'https://cdn.discordapp.com/attachments/810858598954958862/881173812916396052/23023608_1482711901764655_343044072_n.jpg',
-        address: 'some address2',
-        description: 'this is a first meet2'
-    }
-];
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-// export async function getServerSideProps(context) {
-//     const req = context.req;
-//     const res = context.res;
-//     console.log(req + " " + res);
-//     return {
-//         props: {
-//             meetups: DUMMY_MEETUPS,
-//         },
-//     };
-// }
-
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
     //code that runs in the server and not in the client side
     //we can connect to db or API or backend
     //fetch('/api/meetups');
-    const uri = "mongodb+srv://ricardo:luz@cluster0.knayb.mongodb.net/nodejs-blog?retryWrites=true&w=majority";
+    const uri = process.env.DATABASE_LINK
     const client = await MongoClient.connect(uri);
     const db = client.db();
 
     const blogCollection = db.collection('meetups');
     const blog = await blogCollection.find().toArray();
     client.close();
+    //console.log(context.req)
+
     return {
         props: {
             meetups: blog.map(meetup => ({
@@ -52,10 +28,11 @@ export async function getStaticProps() {
                 image: meetup.image,
                 description: meetup.description,
                 id: meetup._id.toString(),
-            }))
-        }, revalidate: 1
+            })),
+        }
     };
 }
+
 
 export default function Home(props) {
     // const [loadedMeetups, setLoadedMeetups] = useState([])
@@ -65,14 +42,16 @@ export default function Home(props) {
 
     //     }
     // }, [])
+    console.log("Heleo")
+    const uri = process.env.DATABASE_LINK
+    console.log(uri)
     return (
         <div id="root">
             <Head>
-                <title>React teste diogo e ricardo</title>
+                <title>React teste</title>
             </Head>
             <Navbar />
             <div>
-
                 <MeetupList meetups={props.meetups} />
             </div>
             <Footer />

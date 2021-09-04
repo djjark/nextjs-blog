@@ -1,14 +1,10 @@
-import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+import Image from 'next/image';
 const { MongoClient, ObjectId } = require('mongodb');
 
 export default function DetailPage(props) {
-    const router = useRouter();
-
-    const postid = router.query.postid
-    console.log(props.meetupData)
     return <Fragment>
-        <img src={props.meetupData.image} alt={props.meetupData.title}></img>
+        <img src={props.meetupData.image} alt={props.meetupData.title} />
         <h1>{props.meetupData.title}</h1>
         <h2>{props.meetupData.address}</h2>
         <h3>{props.meetupData.description}</h3>
@@ -19,7 +15,7 @@ export default function DetailPage(props) {
 }
 
 export async function getStaticPaths() {
-    const uri = "mongodb+srv://ricardo:luz@cluster0.knayb.mongodb.net/nodejs-blog?retryWrites=true&w=majority";
+    const uri = process.env.DATABASE_LINK
     const client = await MongoClient.connect(uri);
     const db = client.db();
 
@@ -37,7 +33,7 @@ export async function getStaticProps(context) {
 
     const gg = context.params.postid;
 
-    const uri = "mongodb+srv://ricardo:luz@cluster0.knayb.mongodb.net/nodejs-blog?retryWrites=true&w=majority";
+    const uri = process.env.DATABASE_LINK
     const client = await MongoClient.connect(uri);
     const db = client.db();
 

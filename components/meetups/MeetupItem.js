@@ -1,7 +1,7 @@
 import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 function MeetupItem(props) {
   const router = useRouter();
   function showDetailsHandler() {
