@@ -1,13 +1,15 @@
 import { useRef } from 'react';
 
 import Card from '../ui/Card';
-import classes from './NewMeetupForm.module.css';
+import classes from './NewMeetupForm.module.scss';
+import { useUser } from '@auth0/nextjs-auth0';
 
 function NewMeetupForm(props) {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
+  const { user, isLoading } = useUser()
 
   function submitHandler(event) {
     event.preventDefault();
@@ -23,14 +25,15 @@ function NewMeetupForm(props) {
       address: enteredAddress,
       description: enteredDescription,
       hora: new Date().getTime(),
+      user_id: user.sub.split("|")[1]
     };
 
     props.onAddMeetup(meetupData);
   }
 
   return (
-    <Card>
-      <form className={classes.form} onSubmit={submitHandler}>
+    <form className={classes.form + " container"} onSubmit={submitHandler}>
+      <div className={classes.card}>
         <div className={classes.control}>
           <label htmlFor='title'>Meetup Title</label>
           <input type='text' required id='title' ref={titleInputRef} />
@@ -55,8 +58,9 @@ function NewMeetupForm(props) {
         <div className={classes.actions}>
           <button>Add Meetup</button>
         </div>
-      </form>
-    </Card>
+      </div>
+
+    </form>
   );
 }
 

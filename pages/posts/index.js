@@ -1,11 +1,17 @@
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/layout/Navbar'
 import { Fragment } from 'react';
 import Link from 'next/link'
 import NewMeetupForm from '../../components/meetups/NewMeetupForm'
 import { useRouter } from 'next/router';
+import { useUser } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+
+export const getServerSideProps = withPageAuthRequired();
+
+
+
 export default function NewPostsPage() {
     // console.log(enteredMeetupData)
-
     const router = useRouter();
     //send the request to the API at api/new-meetup
     async function addMeetupHandler(enteredMeetupData) {
@@ -25,18 +31,9 @@ export default function NewPostsPage() {
 
     return (
         <div id="root">
-            <Navbar />
             <div>
                 <NewMeetupForm onAddMeetup={addMeetupHandler} />
             </div>
-            <h1>HELLO THIS IS Posts</h1>
-            <Fragment>
-                <h2>The Posts Page</h2>
-                <ul>
-                    <li><Link href="/posts/great-nextjs">NextJS is great</Link></li>
-                    <li>Diogoo</li>
-                </ul>
-            </Fragment>
         </div>
     )
 }

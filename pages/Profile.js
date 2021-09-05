@@ -1,5 +1,5 @@
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/layout/Navbar'
 import Loading from './Loading';
 import Image from 'next/image';
 function Profile() {
@@ -8,8 +8,6 @@ function Profile() {
     return (<>
         {isLoading && <Loading />}
         {user && (<div>
-            <Navbar />
-
             <h1>HELLO THIS IS Diogo</h1>
             <h2>{user.name}</h2>
             <h2>{user.email}</h2>

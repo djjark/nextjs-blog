@@ -6,6 +6,12 @@
   margin-bottom: 0.5rem;
 }
 
+.card{
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid rgba(0,2,3,0.1);
+  box-shadow: 5px 5px rgba(159, 160, 160, 0.1);
+}
 .control label {
   display: block;
   font-weight: bold;

@@ -2,13 +2,20 @@ import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useUser } from '@auth0/nextjs-auth0';
+
 function MeetupItem(props) {
   const router = useRouter();
+  const { user, isLoading } = useUser()
+  var aa = ""
+  if (user)
+    aa = user.sub.split("|")[1]
+  console.log(JSON.stringify(props))
+
   function showDetailsHandler() {
     router.push('/posts/' + props.id);
   }
   async function deleteHandler() {
-    router.push('/delete/' + props.id);
     const response = await fetch('/api/new-meetup', {
       method: 'DELETE',
       body: JSON.stringify(props.id),
@@ -18,10 +25,11 @@ function MeetupItem(props) {
     });
 
     const data = await response.json();
+    router.push('/');
 
   }
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <Card>
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
@@ -32,11 +40,12 @@ function MeetupItem(props) {
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>
-          <button onClick={deleteHandler}>Delete</button>
+          {(aa == props.user_id) ? (<button onClick={deleteHandler}>Delete</button>
+          ) : (null)}
 
         </div>
       </Card>
-    </li>
+    </div>
   );
 }
 

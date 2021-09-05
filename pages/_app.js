@@ -1,7 +1,9 @@
 import Layout from '../components/layout/Layout'
-import "../css/global.css"
+import 'bootstrap/dist/css/bootstrap.css'
+
 import '../styles/globals.css'
 import { UserProvider } from '@auth0/nextjs-auth0'
+import classes from '../css/global.css'
 function MyApp({ Component, pageProps }) {
 
 
