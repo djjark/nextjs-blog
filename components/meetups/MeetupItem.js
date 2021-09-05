@@ -29,7 +29,7 @@ function MeetupItem(props) {
 
   }
   return (
-    <div className={classes.item}>
+    <div className={classes.item + " col-12 col-lg-4"}>
       <Card>
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
