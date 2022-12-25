@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0';
 
 
-ss
 function MeetupItem(props) {
   const router = useRouter();
   const { user, isLoading } = useUser()
