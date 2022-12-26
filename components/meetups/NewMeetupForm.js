@@ -27,7 +27,7 @@ function NewMeetupForm(props) {
       hora: new Date().getTime(),
       user_id: user.sub.split("|")[1]
     };
-
+    console.log(meetupData)
     props.onAddMeetup(meetupData);
   }
 
@@ -56,7 +56,7 @@ function NewMeetupForm(props) {
           ></textarea>
         </div>
         <div className={classes.actions}>
-          <button>Add Meetup</button>
+          <button type="submit">Add Meetup</button>
         </div>
       </div>
 

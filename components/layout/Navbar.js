@@ -7,23 +7,22 @@ import classes from './Navbar.module.scss';
 
 const Navbar = () => {
     const { user, isLoading } = useUser()
-    console.log(classes)
     return (
         <div className={classes.navbar + " "} >
-            <Link href="/" passHref><div className={classes.ricardo}><Image src={ricardo} alt="ricardo" /></div></Link>
+            <Link href="/" className={classes.ricardo} passHref><span >EXAMPLE TEST</span></Link>
             <div className={classes.div1}>
                 {/* <Link href="/Testebd" ><a className={classes.butao}>TesteBD</a></Link> */}
                 {user ? (<>
-                    <Link href="/posts" ><a className={classes.butao}>Posts</a></Link>
+                    <Link href="/posts" className={classes.butao}><span className={classes.butao}>Posts</span></Link>
 
-                    <Link href="/Profile" className={classes.butao} passHref><a className={classes.butao}>{user ? (user.name) : (null)}</a></Link>
+                    <Link href="/Profile" className={classes.butao} passHref><span className={classes.butao}>{user ? (user.name) : (null)}</span></Link>
 
-                    <Link href="/api/auth/logout" className={classes.butao} passHref><a className={classes.butao}>Logout</a></Link>
+                    <Link href="/api/auth/logout" className={classes.butao} passHref><span className={classes.butao}>Logout</span></Link>
                 </>
                 ) : (
                     <>
-                        <Link href="/api/auth/login" className={classes.butao} passHref><a className={classes.butao}>Login</a></Link>
-                        <Link href="/api/auth/login" className={classes.butao} passHref><a className={classes.butao}>Sign up</a></Link>
+                        <Link href="/api/auth/login" className={classes.butao} passHref><span className={classes.butao}>Login</span></Link>
+                        <Link href="/api/auth/login" className={classes.butao} passHref><span className={classes.butao}>Sign up</span></Link>
                     </>
 
                 )}

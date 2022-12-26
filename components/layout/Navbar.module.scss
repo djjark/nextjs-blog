@@ -21,18 +21,14 @@
       text-decoration: none;
       font-size: 20px;
     }
-    .ricardo img{
-      height: 60px;
-      width: 60px;
-      border-radius: 50%;
-      opacity: 0.5;
-      transition: 0.5s opacity ease;
+    .ricardo {
+      color:white;
+      text-decoration: none;
+      font-size: 35px;
+      align-self:center;
       cursor: pointer;
     }
-    .ricardo img:hover{
-      opacity: 1;
-      transition: 0.5s opacity ease;
-    }
+
   }
   /* .lol{
     background:red;
