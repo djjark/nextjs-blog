@@ -12,6 +12,7 @@ function MeetupItem(props) {
   if (user)
     aa = user.sub.split("|")[1]
 
+  console.log(aa)
   function showDetailsHandler() {
     router.push('/posts/' + props.id);
   }

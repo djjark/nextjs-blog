@@ -14,8 +14,9 @@ const Navbar = () => {
                 {/* <Link href="/Testebd" ><a className={classes.butao}>TesteBD</a></Link> */}
                 {user ? (<>
                     <Link href="/posts" className={classes.butao}><span className={classes.butao}>Posts</span></Link>
+                    <Link href="/shopping_list" className={classes.butao}><span className={classes.butao}>Shopping List</span></Link>
 
-                    <Link href="/Profile" className={classes.butao} passHref><span className={classes.butao}>{user ? (user.name) : (null)}</span></Link>
+                    <Link href="/profile" className={classes.butao} passHref><span className={classes.butao}>{user ? (user.name) : (null)}</span></Link>
 
                     <Link href="/api/auth/logout" className={classes.butao} passHref><span className={classes.butao}>Logout</span></Link>
                 </>
